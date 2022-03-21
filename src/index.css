@@ -1,0 +1,225 @@
+/* Global
+--------------------------------- */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Side Navigation
+--------------------------------- */
+
+.sidenav-show {
+  transform: translateX(0) !important;
+}
+
+.wishlist:hover .wishlist-count {
+  color: #fff;
+}
+
+/* Scrollbar
+---------------------------------*/
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+/* Orders Table
+---------------------------------*/
+
+.pending {
+  color: #0f3460;
+  background: rgba(161, 182, 207, 0.2);
+}
+
+.delivered {
+  color: #107d34 !important;
+  background: rgba(51, 208, 103, 0.15);
+}
+
+.cancelled {
+  color: #ad0b26 !important;
+  background: rgb(255, 225, 230);
+}
+
+.chakra-ui-dark .pending {
+  color: #7bade7;
+  background: rgba(120, 137, 159, 0.2);
+}
+
+.chakra-ui-dark .delivered {
+  color: #10e355 !important;
+}
+
+.chakra-ui-dark .cancelled {
+  color: #920000;
+  background-color: #fdcccc;
+}
+
+/* React Tooltip 
+--------------------------------- */
+
+.__react_component_tooltip.show {
+  opacity: 1 !important;
+}
+
+.__react_component_tooltip {
+  padding: 8px 16px !important;
+}
+
+/* React Select
+--------------------------------- */
+
+.select-container .inner__control--is-focused {
+  border-color: #000;
+  box-shadow: none;
+}
+
+.select-container .inner__control:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.select-container .inner__control--is-focused.inner__control:hover {
+  border-color: #000;
+}
+
+.select-container.invalid .inner__control {
+  border-color: #d40505;
+}
+
+.select-container + .chakra-form__error-message {
+  color: #d40505;
+}
+
+.order .select-container.invalid .inner__control {
+  border-color: #fc8181;
+}
+
+.order .select-container + .chakra-form__error-message {
+  color: #fc8181;
+}
+
+.select-container .inner__dropdown-indicator:hover {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.select-container .inner__option--is-focused {
+  color: #fff;
+  background: #0f3460;
+}
+
+.select-container .inner__option:active {
+  background: #da0b2f;
+}
+
+.select-container .inner__option--is-selected {
+  color: #fff;
+  background: #da0b2f;
+}
+
+.chakra-ui-dark .inner__option {
+  color: #fff;
+}
+
+.chakra-ui-dark .select-container .inner__control {
+  background: #2e2f30 !important;
+  border-color: #3f4142;
+}
+
+.chakra-ui-dark .select-container.invalid .inner__control {
+  border-color: #fc8181;
+}
+
+.chakra-ui-dark .select-container + .chakra-form__error-message {
+  color: #fc8181;
+}
+
+.chakra-ui-dark .select-container .inner__control--is-focused {
+  border-color: #fff;
+}
+
+.chakra-ui-dark
+  .select-container
+  .inner__control--is-focused.inner__control:hover {
+  border-color: #fff;
+}
+
+.chakra-ui-dark .inner__single-value {
+  color: #fff !important;
+}
+
+.chakra-ui-dark .inner__input {
+  color: #fff;
+}
+
+.chakra-ui-dark .inner__placeholder {
+  color: rgba(255, 255, 255, 0.24);
+}
+
+.chakra-ui-dark .inner__indicator-separator {
+  background: #fff;
+}
+
+.chakra-ui-dark .inner__dropdown-indicator {
+  color: #fff;
+}
+
+.chakra-ui-dark .select-container .inner__dropdown-indicator:hover {
+  color: #fff;
+}
+
+.chakra-ui-dark .inner__menu {
+  background: #212223;
+  border-color: #3f4142;
+}
+
+/* .select-container.invalid .inner__control {
+  border-color: #fc8181;
+}
+
+.select-container + .chakra-form__error-message {
+  color: #fc8181;
+} */
+
+/* React Slick Slider
+---------------------------------*/
+
+.hero-slider .slick-slider {
+  height: 100%;
+}
+
+/* React Toastify
+---------------------------------*/
+.Toastify__toast {
+  font-size: 14px;
+}
+
+/* React Alert
+---------------------------------*/
+
+.MuiDialogTitle-root {
+  padding-bottom: 10px !important;
+}
+
+.MuiTypography-h6 {
+  font-weight: 600 !important;
+}
+
+.MuiTypography-colorTextSecondary {
+  color: #000 !important;
+}
+
+.MuiDialogActions-root {
+  padding-bottom: 16px !important;
+  padding-right: 24px !important;
+}
+
+.MuiButton-textPrimary {
+  color: #fff !important;
+  background: #e8163a !important;
+  border: 1px solid #e8163a !important;
+}
