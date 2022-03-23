@@ -29,9 +29,9 @@ const SubFooter = () => {
       <Box>
         <Box>
           Made with{" "}
-          <Box as="em">
+          <Box as="em" verticalAlign="sub">
             <VisuallyHidden>love</VisuallyHidden>
-            <Icon as={MdFavorite} boxSize="5" color="red" />
+            <Icon as={MdFavorite} boxSize="4" color="red" />
           </Box>{" "}
           by{" "}
           <Link
