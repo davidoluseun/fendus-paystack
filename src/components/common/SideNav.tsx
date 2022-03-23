@@ -153,7 +153,7 @@ const SideNav = ({ isOpen, setIsOpen }: SideNavProps) => {
           <SideNavLink
             text="Orders"
             to="/admin/orders"
-            LinkIcon={MdFavoriteBorder}
+            LinkIcon={RiTruckLine}
             setSideNavIsOpen={setIsOpen}
           />
         </Flex>
