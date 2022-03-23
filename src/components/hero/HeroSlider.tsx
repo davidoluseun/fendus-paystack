@@ -42,7 +42,6 @@ const HeroSlider = () => {
             key={product._id}
             pb="60.125%"
             position="relative"
-            className="hero-img-container"
           >
             <Image
               top="0"
