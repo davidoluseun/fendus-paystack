@@ -179,19 +179,15 @@ const Order = () => {
                   >
                     {order?.products.map((product) => (
                       <Flex align="center" key={product._id}>
-                        {product.img ? (
-                          <Image
-                            w="125px"
-                            borderRadius="md"
-                            alt="Product image"
-                            src={product.img.replace(
-                              "upload/",
-                              "upload/w_480,h_480/"
-                            )}
-                          />
-                        ) : (
-                          <Box>Hello</Box>
-                        )}
+                        <Image
+                          w="125px"
+                          borderRadius="md"
+                          alt="Product image"
+                          src={product.img.replace(
+                            "upload/",
+                            "upload/w_480,h_480/"
+                          )}
+                        />
                         <Box ml="4">
                           <Heading
                             as="h3"
