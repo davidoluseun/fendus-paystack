@@ -47,7 +47,7 @@ const VerifyEmail = () => {
             const isExpire =
               ex.response.data === "Link has expired or already used.";
 
-            const notFound = ex.response.data === "Email not found.";
+            const notFound = ex.response.data === "User not found.";
 
             if (isExpire) setExpired(true);
             else if (notFound) setNotFound(true);

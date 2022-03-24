@@ -64,7 +64,7 @@ const PasswordReset = () => {
           if (ex.response && ex.response.status === 400) {
             const inValid = ex.response.data === "Invalid token.";
 
-            const notFound = ex.response.data === "Email not found.";
+            const notFound = ex.response.data === "User not found.";
 
             const hasExpired =
               ex.response.data === "Link has expired or already used.";
@@ -103,7 +103,7 @@ const PasswordReset = () => {
         const hasExpired =
           ex.response.data === "Link has expired or already used.";
 
-        const notFound = ex.response.data === "Email not found.";
+        const notFound = ex.response.data === "User not found.";
 
         if (hasExpired) setNextExpired(true);
         else if (notFound) setNextNotFound(true);
