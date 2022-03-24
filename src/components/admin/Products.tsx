@@ -174,7 +174,7 @@ const Products = () => {
 
                       <Image
                         borderTopRadius="md"
-                        alt={product.title}
+                        alt="Product image"
                         src={product.img.replace(
                           "upload/",
                           "upload/w_480,h_480/"

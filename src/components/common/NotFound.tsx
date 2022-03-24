@@ -5,7 +5,7 @@ import NotFoundImg from "../../images/404.jpg";
 const NotFound = () => {
   return (
     <Box mt="-8" mb="-10" position="relative" pb="55.93%" bg="secondary">
-      <Image position="absolute" top="0" left="0" src={NotFoundImg} alt="" />
+      <Image position="absolute" top="0" left="0" src={NotFoundImg} alt="Not found" />
       <Link
         as={RouteLink}
         to="/"

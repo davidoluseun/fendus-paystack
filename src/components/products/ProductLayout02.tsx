@@ -213,7 +213,7 @@ const ProductLayout02 = (props: ProductLayout02Props) => {
             boxShadow="0px 0px 2px rgba(0, 0, 0, .2)"
           >
             <Image
-              alt={product.title}
+              alt="Product image"
               borderTopRadius="md"
               src={product.img.replace("upload/", "upload/w_480/")}
             />

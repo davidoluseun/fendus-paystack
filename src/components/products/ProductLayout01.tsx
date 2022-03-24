@@ -72,7 +72,7 @@ const ProductLayout01 = (props: ProductLayout01Props) => {
             justifyContent="space-between"
           >
             <Image
-              alt={product.title}
+              alt="Product image"
               borderRadius="md"
               src={product.img.replace("upload/", "upload/w_480/")}
             />

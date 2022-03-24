@@ -170,7 +170,7 @@ const Wishlist = () => {
 
                     <Image
                       borderTopRadius="md"
-                      alt={wishProduct.title}
+                      alt="Product image"
                       src={wishProduct.img.replace("upload/", "upload/w_480/")}
                     />
 

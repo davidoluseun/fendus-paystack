@@ -220,7 +220,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
             w={{ sm: "300px" }}
             align="center"
             borderRadius="md"
-            alt={product.title}
+            alt="Product image"
             src={product.img.replace("upload/", "upload/w_480/")}
           />
         </Flex>
