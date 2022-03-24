@@ -4,7 +4,7 @@ import { Link as RouteLink, useLocation } from "react-router-dom";
 import { MdKitchen, MdComputer, MdPhoneAndroid } from "react-icons/md";
 import { BsHouseDoor } from "react-icons/bs";
 import { RiHandbagLine, RiWomenLine, RiMenLine } from "react-icons/ri";
-import { IoMdFitness, IoIosAirplane } from "react-icons/io";
+import { IoMdFitness } from "react-icons/io";
 import { AppContext } from "./AppContext";
 
 type CategoriesProps = {
