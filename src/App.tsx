@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { dispatch } = React.useContext(AppContext);
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
 
@@ -27,7 +27,6 @@ function App() {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
 
       try {
         if (currentUser) {
@@ -45,6 +44,7 @@ function App() {
               payload: initAppData,
             });
         } else {
+          
           const { data: categories } = await getCategories();
           const { data: products } = await getProducts();
 
