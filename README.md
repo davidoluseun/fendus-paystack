@@ -1,5 +1,10 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+# Fendus Firebase
+
+The front-end of Fendus Paystack, a full-stack e-commerce web app, built with React, Chakra UI, Node.js and Express. Payment integration with [Paystack](https://paystack.com/) payment gateway, bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+[Live site](https://fendus-paystack.herokuapp.com/)
+
+Payment integration is in test mode, feel free to make payment.
 
 ## Available Scripts
 
@@ -50,10 +55,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for
 small and middle deployments, and you shouldn’t feel obligated to use this
 feature. However we understand that this tool wouldn’t be useful if you couldn’t
 customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
