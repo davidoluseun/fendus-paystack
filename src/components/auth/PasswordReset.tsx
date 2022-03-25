@@ -29,7 +29,7 @@ type FormikTypes = {
 
 const PasswordReset = () => {
   const [userEmail, setUserEmail] = React.useState("");
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [initialInValid, setInitialInValid] = React.useState(false);
   const [nextInValid, setNextInValid] = React.useState(false);
@@ -50,10 +50,6 @@ const PasswordReset = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
-      setInitialInValid(false);
-      setInitialExpired(false);
-      setInitialNotFound(false);
 
       try {
         const { data } = await getPasswordEmail(token);
@@ -63,9 +59,7 @@ const PasswordReset = () => {
         if (!didCancel)
           if (ex.response && ex.response.status === 400) {
             const inValid = ex.response.data === "Invalid token.";
-
             const notFound = ex.response.data === "User not found.";
-
             const hasExpired =
               ex.response.data === "Link has expired or already used.";
 
@@ -75,7 +69,10 @@ const PasswordReset = () => {
           } else setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+      setLoading(false);
+      setTryAgain(false);
+      } 
     };
 
     fetchData();
@@ -100,10 +97,9 @@ const PasswordReset = () => {
       setReset(false);
     } catch (ex: any) {
       if (ex.response && ex.response.status === 400) {
+        const notFound = ex.response.data === "User not found.";
         const hasExpired =
           ex.response.data === "Link has expired or already used.";
-
-        const notFound = ex.response.data === "User not found.";
 
         if (hasExpired) setNextExpired(true);
         else if (notFound) setNextNotFound(true);

@@ -15,7 +15,7 @@ type ParamTypes = {
 };
 
 const VerifyEmail = () => {
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [isInValid, setInValid] = React.useState(false);
   const [hasExpired, setExpired] = React.useState(false);
@@ -32,10 +32,6 @@ const VerifyEmail = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
-      setInValid(false);
-      setExpired(false);
-      setNotFound(false);
 
       try {
         const request = { token };
@@ -44,10 +40,9 @@ const VerifyEmail = () => {
       } catch (ex: any) {
         if (!didCancel)
           if (ex.response && ex.response.status === 400) {
+            const notFound = ex.response.data === "User not found.";
             const isExpire =
               ex.response.data === "Link has expired or already used.";
-
-            const notFound = ex.response.data === "User not found.";
 
             if (isExpire) setExpired(true);
             else if (notFound) setNotFound(true);
@@ -55,7 +50,10 @@ const VerifyEmail = () => {
           } else setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();
