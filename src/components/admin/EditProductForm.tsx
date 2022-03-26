@@ -53,7 +53,6 @@ const EditProductForm = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
 
       try {
         const { data } = await getProduct(paramId);
@@ -66,7 +65,10 @@ const EditProductForm = () => {
           else setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();

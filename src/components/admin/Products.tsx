@@ -37,7 +37,6 @@ const Products = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
 
       try {
         const { data: products } = await getProducts();
@@ -47,7 +46,10 @@ const Products = () => {
         if (!didCancel) setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();

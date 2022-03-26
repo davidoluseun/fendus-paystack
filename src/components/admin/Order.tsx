@@ -57,7 +57,6 @@ const Order = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
 
       try {
         const { data } = await getAdminOrder(id);
@@ -69,7 +68,10 @@ const Order = () => {
           else setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();

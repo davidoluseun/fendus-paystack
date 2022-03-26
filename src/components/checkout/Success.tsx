@@ -25,7 +25,6 @@ const Success = () => {
 
     const SendData = async () => {
       setError(false);
-      setTryAgain(false);
 
       try {
         await saveOrder({ paymentId, subTotal, deliveryFee });
@@ -38,6 +37,8 @@ const Success = () => {
       } catch (ex) {
         if (!didCancel) setError(true);
       }
+
+      if (!didCancel) setTryAgain(false);
     };
 
     if (subTotal) SendData();

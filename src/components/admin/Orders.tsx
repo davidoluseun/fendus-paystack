@@ -20,7 +20,6 @@ const Orders = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
 
       try {
         const { data } = await getAdminOrders();
@@ -30,7 +29,10 @@ const Orders = () => {
         if (!didCancel) setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();
