@@ -45,8 +45,8 @@ const ProductItem = ({ product }: ProductItemProps) => {
   const handleAddToCart = async (product: ProductTypes) => {
     if (!currentUser) {
       colorMode === "light"
-        ? toast.dark("Sign in to your account to add a product to your cart")
-        : toast("Sign in to your account to add a product to your cart");
+        ? toast.dark("Please sign in to add a product to cart")
+        : toast("Please sign in to add a product to cart");
 
       return null;
     }
@@ -85,7 +85,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
     };
 
     if (wishProduct) {
-      alert.show("This item is in wishlist, do you wish to move it to cart?", {
+      alert.show("This product is in wishlist, do you wish to move it to cart?", {
         title: "Move to Cart",
         closeCopy: "No",
         actions: [
@@ -130,10 +130,8 @@ const ProductItem = ({ product }: ProductItemProps) => {
   const handleAddToWishlist = async (product: ProductTypes) => {
     if (!currentUser) {
       colorMode === "light"
-        ? toast.dark(
-            "Sign in to your account to add a product to your wishlist"
-          )
-        : toast("Sign in to your account to add a product to your wishlist");
+        ? toast.dark("Please sign in to add a product to wishlist")
+        : toast("Please sign in to add a product to wishlist");
 
       return null;
     }
@@ -171,7 +169,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
     };
 
     if (cartProduct) {
-      alert.show("This item is in cart, do you wish to move it to wishlist?", {
+      alert.show("This product is in cart, do you wish to move it to wishlist?", {
         title: "Move to Wishlist",
         closeCopy: "No",
         actions: [

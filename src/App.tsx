@@ -44,7 +44,6 @@ function App() {
               payload: initAppData,
             });
         } else {
-          
           const { data: categories } = await getCategories();
           const { data: products } = await getProducts();
 
@@ -57,7 +56,10 @@ function App() {
         if (!didCancel) setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();
@@ -79,7 +81,7 @@ function App() {
             <Error
               isBaseError={true}
               onTryAgain={handleTryAgain}
-              text="An error occurred due to failing network. Check your internet connection and try again."
+              text="An error occurred! This maybe due to failing network. Check your internet connection and try again."
             />
           ) : (
             <Fendus />
