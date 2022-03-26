@@ -42,7 +42,7 @@ type FormikTypes = {
 
 const Order = () => {
   const [order, setOrder] = React.useState<OrderTypes>();
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
   const [isSubmitting, setSubmitting] = React.useState(false);
@@ -57,7 +57,6 @@ const Order = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
 
       try {
         const { data } = await getAdminOrder(id);
@@ -69,7 +68,10 @@ const Order = () => {
           else setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();

@@ -16,7 +16,7 @@ import { getTotalSales } from "../../utils/getTotalSales";
 const Dashboard = () => {
   const [products, setProducts] = React.useState<ProductTypes[]>([]);
   const [orders, setOrders] = React.useState<OrderTypes[]>([]);
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
 
@@ -28,7 +28,6 @@ const Dashboard = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
 
       try {
         const { data: products } = await getProducts();
@@ -42,7 +41,10 @@ const Dashboard = () => {
         if (!didCancel) setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();

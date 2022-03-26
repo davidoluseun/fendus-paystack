@@ -21,11 +21,12 @@ const Success = () => {
   const deliveryFee = getDeliveryFee(deliveryState, cart.length);
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
+
     let didCancel = false;
 
     const SendData = async () => {
       setError(false);
-      setTryAgain(false);
 
       try {
         await saveOrder({ paymentId, subTotal, deliveryFee });
@@ -38,6 +39,8 @@ const Success = () => {
       } catch (ex) {
         if (!didCancel) setError(true);
       }
+
+      if (!didCancel) setTryAgain(false);
     };
 
     if (subTotal) SendData();

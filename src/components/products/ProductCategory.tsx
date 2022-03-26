@@ -21,7 +21,7 @@ const getLinks = (category: string | undefined) => {
 };
 
 const ProductCategory = () => {
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [products, setProducts] = React.useState<ProductTypes[]>([]);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
@@ -35,7 +35,6 @@ const ProductCategory = () => {
     const fetchData = async () => {
       setLoading(true);
       setError(false);
-      setTryAgain(false);
 
       try {
         const { data } = await getProducts(paramCategory);
@@ -48,7 +47,10 @@ const ProductCategory = () => {
           else setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();
