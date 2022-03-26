@@ -44,7 +44,6 @@ function App() {
               payload: initAppData,
             });
         } else {
-          
           const { data: categories } = await getCategories();
           const { data: products } = await getProducts();
 
@@ -57,7 +56,10 @@ function App() {
         if (!didCancel) setError(true);
       }
 
-      if (!didCancel) setLoading(false);
+      if (!didCancel) {
+        setLoading(false);
+        setTryAgain(false);
+      }
     };
 
     fetchData();
