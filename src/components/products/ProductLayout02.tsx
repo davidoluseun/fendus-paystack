@@ -42,8 +42,8 @@ const ProductLayout02 = (props: ProductLayout02Props) => {
   const handleIncrement = async (product: ProductTypes) => {
     if (!currentUser) {
       colorMode === "light"
-        ? toast.dark("Sign in to your account to add a product to your cart")
-        : toast("Sign in to your account to add a product to your cart");
+        ? toast.dark("Please sign in to add a product to cart")
+        : toast("Please sign in to add a product to cart");
 
       return null;
     }

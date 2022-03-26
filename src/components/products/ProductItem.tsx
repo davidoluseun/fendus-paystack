@@ -45,8 +45,8 @@ const ProductItem = ({ product }: ProductItemProps) => {
   const handleAddToCart = async (product: ProductTypes) => {
     if (!currentUser) {
       colorMode === "light"
-        ? toast.dark("Sign in to your account to add a product to your cart")
-        : toast("Sign in to your account to add a product to your cart");
+        ? toast.dark("Please sign in to add a product to cart")
+        : toast("Please sign in to add a product to cart");
 
       return null;
     }
@@ -130,10 +130,8 @@ const ProductItem = ({ product }: ProductItemProps) => {
   const handleAddToWishlist = async (product: ProductTypes) => {
     if (!currentUser) {
       colorMode === "light"
-        ? toast.dark(
-            "Sign in to your account to add a product to your wishlist"
-          )
-        : toast("Sign in to your account to add a product to your wishlist");
+        ? toast.dark("Please sign in to add a product to wishlist")
+        : toast("Please sign in to add a product to wishlist");
 
       return null;
     }
