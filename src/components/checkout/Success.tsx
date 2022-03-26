@@ -21,6 +21,8 @@ const Success = () => {
   const deliveryFee = getDeliveryFee(deliveryState, cart.length);
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
+
     let didCancel = false;
 
     const SendData = async () => {
