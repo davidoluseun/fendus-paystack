@@ -85,7 +85,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
     };
 
     if (wishProduct) {
-      alert.show("This item is in wishlist, do you wish to move it to cart?", {
+      alert.show("This product is in wishlist, do you wish to move it to cart?", {
         title: "Move to Cart",
         closeCopy: "No",
         actions: [
@@ -169,7 +169,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
     };
 
     if (cartProduct) {
-      alert.show("This item is in cart, do you wish to move it to wishlist?", {
+      alert.show("This product is in cart, do you wish to move it to wishlist?", {
         title: "Move to Wishlist",
         closeCopy: "No",
         actions: [
