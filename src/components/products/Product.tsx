@@ -31,7 +31,7 @@ const getLinks = ({ category, product, id }: LinksType) => {
 const Product = () => {
   const { state } = React.useContext(AppContext);
   const [product, setProduct] = React.useState<ProductTypes>();
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
 

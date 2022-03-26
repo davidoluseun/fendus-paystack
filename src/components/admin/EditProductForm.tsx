@@ -38,7 +38,7 @@ type ParamTypes = {
 const EditProductForm = () => {
   const { state } = React.useContext(AppContext);
   const [product, setProduct] = React.useState<ProductTypes | null>(null);
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
   const [fileName, setFileName] = React.useState("");

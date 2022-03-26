@@ -23,7 +23,7 @@ import { getProducts, deleteProduct } from "../../services/productService";
 
 const Products = () => {
   const { state, dispatch } = React.useContext(AppContext);
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
 
