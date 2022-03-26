@@ -81,7 +81,7 @@ function App() {
             <Error
               isBaseError={true}
               onTryAgain={handleTryAgain}
-              text="An error occurred due to failing network. Check your internet connection and try again."
+              text="An error occurred! This maybe due to failing network. Check your internet connection and try again."
             />
           ) : (
             <Fendus />
