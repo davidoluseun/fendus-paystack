@@ -97,56 +97,55 @@ const CustomSelect = (props: CustomSelectProps) => {
 
   return (
     <Field name={name}>
-      {({ field, form, onBlur }: FieldAttributes<any>) =>  (
-          <FormControl mb="4" isInvalid={!!errors[name] && touched[name]}>
-            {isHidden ? (
-              <VisuallyHidden>
-                <FormLabel>{label}</FormLabel>
-              </VisuallyHidden>
-            ) : (
-              <Flex>
-                <FormLabel mr="2">{label}</FormLabel>
-                {hasAsterisk && (
-                  <Box
-                    as="span"
-                    color={colorMode === "light" ? "errorLight" : "errorDark"}
-                  >
-                    *
-                  </Box>
-                )}
-              </Flex>
-            )}
+      {({ field, form, onBlur }: FieldAttributes<any>) => (
+        <FormControl mb="4" isInvalid={!!errors[name] && touched[name]}>
+          {isHidden ? (
+            <VisuallyHidden>
+              <FormLabel>{label}</FormLabel>
+            </VisuallyHidden>
+          ) : (
+            <Flex>
+              <FormLabel mr="2">{label}</FormLabel>
+              {hasAsterisk && (
+                <Box
+                  as="span"
+                  color={colorMode === "light" ? "errorLight" : "errorDark"}
+                >
+                  *
+                </Box>
+              )}
+            </Flex>
+          )}
 
-            <Select
-              name={name}
-              options={options}
-              value={
-                reset
-                  ? null
-                  : options.find((option) => option.value === field.value)
-              }
-             
-              className={
-                !!errors[name] && touched[name]
-                  ? "select-container invalid"
-                  : "select-container"
-              }
-              isDisabled={isDisabled}
-              classNamePrefix="inner"
-              onChange={(option) => form.setFieldValue(name, option?.value)}
-              onBlur={onBlur}
-              styles={customStyles}
-              placeholder={placeholder}
-            />
+          <Select
+            name={name}
+            options={options}
+            value={
+              reset
+                ? null
+                : options.find((option) => option.value === field.value)
+            }
+            className={
+              !!errors[name] && touched[name]
+                ? "select-container invalid"
+                : "select-container"
+            }
+            isDisabled={isDisabled}
+            classNamePrefix="inner"
+            onChange={(option) => form.setFieldValue(name, option?.value)}
+            onBlur={onBlur}
+            styles={customStyles}
+            placeholder={placeholder}
+          />
 
-            <FormErrorMessage
-              fontSize="14px"
-              color={colorMode === "light" ? "errorLight" : "errorDark"}
-            >
-              {errors[name]}
-            </FormErrorMessage>
-          </FormControl>
-        )}
+          <FormErrorMessage
+            fontSize="14px"
+            color={colorMode === "light" ? "errorLight" : "errorDark"}
+          >
+            {errors[name]}
+          </FormErrorMessage>
+        </FormControl>
+      )}
     </Field>
   );
 };
