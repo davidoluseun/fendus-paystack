@@ -153,7 +153,7 @@ body {
 }
 
 .chakra-ui-dark .inner__input {
-  color: #fff;
+  color: #fff !important;
 }
 
 .chakra-ui-dark .inner__placeholder {
@@ -176,14 +176,6 @@ body {
   background: #212223;
   border-color: #3f4142;
 }
-
-/* .select-container.invalid .inner__control {
-  border-color: #fc8181;
-}
-
-.select-container + .chakra-form__error-message {
-  color: #fc8181;
-} */
 
 /* React Slick Slider
 ---------------------------------*/
