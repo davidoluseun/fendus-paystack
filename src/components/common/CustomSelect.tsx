@@ -97,7 +97,7 @@ const CustomSelect = (props: CustomSelectProps) => {
 
   return (
     <Field name={name}>
-      {({ field, form, onBlur }: FieldAttributes<any>) => (
+      {({ field, form }: FieldAttributes<any>) => (
         <FormControl mb="4" isInvalid={!!errors[name] && touched[name]}>
           {isHidden ? (
             <VisuallyHidden>
@@ -133,7 +133,9 @@ const CustomSelect = (props: CustomSelectProps) => {
             isDisabled={isDisabled}
             classNamePrefix="inner"
             onChange={(option) => form.setFieldValue(name, option?.value)}
-            onBlur={onBlur}
+            onBlur={() =>
+              form.setTouched({ ...form.touched, [field.name]: true })
+            }
             styles={customStyles}
             placeholder={placeholder}
           />
