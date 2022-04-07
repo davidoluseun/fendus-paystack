@@ -45,7 +45,7 @@ function App() {
           const wishlist = responses[4].data;
 
           const localStoragePaymentId = localStorage.getItem("paymentId");
-          const paymentId = localStoragePaymentId ? localStoragePaymentId : ""
+          const paymentId = localStoragePaymentId ? localStoragePaymentId : "";
 
           const initAppData = {
             categories,
@@ -63,7 +63,7 @@ function App() {
             });
         } else {
           const responses = await Promise.all([getCategories(), getProducts()]);
-          
+
           const categories = responses[0].data;
           const products = responses[1].data;
 
@@ -101,7 +101,7 @@ function App() {
             <Error
               isBaseError={true}
               onTryAgain={handleTryAgain}
-              text="An error occurred! This maybe due to failing network. Check your internet connection and try again."
+              text="An error occurred! This might be due to failing network. Check your internet connection and try again."
             />
           ) : (
             <Fendus />
