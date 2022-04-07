@@ -36,7 +36,7 @@ const SideNav = ({ isOpen, setIsOpen }: SideNavProps) => {
     <Flex
       left="0"
       top="0"
-      bottom="0"
+      h={{ base: "100%", md: "auto" }}
       id="side-nav"
       position="fixed"
       zIndex="modal"
