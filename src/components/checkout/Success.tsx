@@ -34,6 +34,7 @@ const Success = () => {
         if (!didCancel) {
           dispatch({ type: "EMPTY_CART" });
           dispatch({ type: "SET_PAYMENT_ID", payload: "" });
+          localStorage.removeItem("paymentId");
           navigate("/orders", { replace: true });
         }
       } catch (ex) {

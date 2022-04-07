@@ -220,7 +220,12 @@ const ProductLayout02 = (props: ProductLayout02Props) => {
 
             <Flex p="3" justify="space-between">
               <Flex mr="2" direction="column" justify="space-between">
-                <Heading as="h3" fontWeight="semibold" fontSize="inherit">
+                <Heading
+                  as="h3"
+                  fontSize="inherit"
+                  fontWeight="semibold"
+                  textTransform="capitalize"
+                >
                   <LinkOverlay
                     as={RouteLink}
                     to={`/products/${product.category.name}/${product._id}`}

@@ -30,13 +30,31 @@ function App() {
 
       try {
         if (currentUser) {
-          const { data: categories } = await getCategories();
-          const { data: products } = await getProducts();
-          const { data: user } = await getUser();
-          const { data: cart } = await getCarts();
-          const { data: wishlist } = await getWishlists();
+          const responses = await Promise.all([
+            getCategories(),
+            getProducts(),
+            getUser(),
+            getCarts(),
+            getWishlists(),
+          ]);
 
-          const initAppData = { categories, products, user, cart, wishlist };
+          const categories = responses[0].data;
+          const products = responses[1].data;
+          const user = responses[2].data;
+          const cart = responses[3].data;
+          const wishlist = responses[4].data;
+
+          const localStoragePaymentId = localStorage.getItem("paymentId");
+          const paymentId = localStoragePaymentId ? localStoragePaymentId : "";
+
+          const initAppData = {
+            categories,
+            products,
+            user,
+            cart,
+            wishlist,
+            paymentId,
+          };
 
           if (!didCancel)
             dispatch({
@@ -44,8 +62,10 @@ function App() {
               payload: initAppData,
             });
         } else {
-          const { data: categories } = await getCategories();
-          const { data: products } = await getProducts();
+          const responses = await Promise.all([getCategories(), getProducts()]);
+
+          const categories = responses[0].data;
+          const products = responses[1].data;
 
           const initAppData = { categories, products };
 
@@ -81,7 +101,7 @@ function App() {
             <Error
               isBaseError={true}
               onTryAgain={handleTryAgain}
-              text="An error occurred! This maybe due to failing network. Check your internet connection and try again."
+              text="An error occurred! This might be due to failing network. Check your internet connection and try again."
             />
           ) : (
             <Fendus />
