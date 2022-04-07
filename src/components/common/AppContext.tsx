@@ -31,6 +31,7 @@ type InitAppDataWithAuthTypes = {
   user: UserTypes
   cart: CartTypes[];
   wishlist: WishlistTypes[];
+  paymentId: string;
 };
 
 export type AppActionTypes =
@@ -90,6 +91,7 @@ const reducer = (state: AppStateTypes, action: AppActionTypes) => {
         profilePhoto: action.payload.user?.img,
         cart: action.payload.cart,
         wishlist: action.payload.wishlist,
+        paymentId: action.payload.paymentId,
       };
 
     case "SET_CATEGORIES":

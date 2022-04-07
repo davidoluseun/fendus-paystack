@@ -44,7 +44,17 @@ function App() {
           const cart = responses[3].data;
           const wishlist = responses[4].data;
 
-          const initAppData = { categories, products, user, cart, wishlist };
+          const localStoragePaymentId = localStorage.getItem("paymentId");
+          const paymentId = localStoragePaymentId ? localStoragePaymentId : ""
+
+          const initAppData = {
+            categories,
+            products,
+            user,
+            cart,
+            wishlist,
+            paymentId,
+          };
 
           if (!didCancel)
             dispatch({

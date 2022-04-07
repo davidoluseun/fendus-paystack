@@ -33,6 +33,7 @@ const MakePayment = ({ isSubmitted, deliveryState }: MakePaymentProps) => {
   const onSuccess = (reference: any) => {
     const { reference: paymentId } = reference;
 
+    localStorage.setItem("paymentId", paymentId);
     dispatch({ type: "SET_PAYMENT_ID", payload: paymentId });
   };
 
