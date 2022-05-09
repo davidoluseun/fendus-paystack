@@ -41,7 +41,7 @@ const theme = extendTheme({
     darkBg: "#18191a",
     surfaceDarkBg: "#242526",
     popupDarkBg: "#3a3b3c",
-    inputDarkBg: "#3a3b3c ",
+    inputDarkBg: "#3a3b3c",
     light: "#f5f6f7",
     linkLight: "#076de5",
     linkDark: "#3b91f7",
