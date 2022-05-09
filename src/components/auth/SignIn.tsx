@@ -115,10 +115,18 @@ const SignIn = () => {
                 justify="space-between"
                 fontSize={{ base: "14px", sm: "16px" }}
               >
-                <Link color="link" as={RouteLink} to="/verify">
+                <Link
+                  to="/verify"
+                  as={RouteLink}
+                  color={colorMode === "light" ? "linkLight" : "linkDark"}
+                >
                   Verify Email
                 </Link>
-                <Link color="link" as={RouteLink} to="/password/recovery">
+                <Link
+                  as={RouteLink}
+                  to="/password/recovery"
+                  color={colorMode === "light" ? "linkLight" : "linkDark"}
+                >
                   Forgot Password?
                 </Link>
               </Flex>
@@ -141,7 +149,12 @@ const SignIn = () => {
 
               <Text fontSize={{ base: "14px", sm: "16px" }}>
                 Don't have an account?
-                <Link ml="1" color="link" to="/sign-up" as={RouteLink}>
+                <Link
+                  ml="1"
+                  to="/sign-up"
+                  as={RouteLink}
+                  color={colorMode === "light" ? "linkLight" : "linkDark"}
+                >
                   Create one
                 </Link>
               </Text>

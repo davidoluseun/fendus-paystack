@@ -31,7 +31,7 @@ const MainHelperLinks = ({ links }: MainHelperLinksTypes) => {
               links.indexOf(link) === links.length - 1
                 ? colorMode === "light"
                   ? "primary"
-                  : "#3b91f7"
+                  : "linkDark"
                 : ""
             }
           >

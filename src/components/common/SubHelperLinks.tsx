@@ -19,7 +19,7 @@ const SubHelperLinks = ({ isCart, isPayment }: SubHelperLinksProps) => {
         p="2"
         to="/cart"
         as={RouteLink}
-        color={isCart ? (colorMode === "light" ? "primary" : "#3b91f7") : ""}
+        color={isCart ? (colorMode === "light" ? "primary" : "linkDark") : ""}
         _hover={{ textDecor: "none" }}
       >
         Cart
@@ -33,7 +33,9 @@ const SubHelperLinks = ({ isCart, isPayment }: SubHelperLinksProps) => {
         fontSize="14px"
         bg="transparent"
         fontWeight="normal"
-        color={isPayment ? (colorMode === "light" ? "primary" : "#3b91f7") : ""}
+        color={
+          isPayment ? (colorMode === "light" ? "primary" : "linkDark") : ""
+        }
         _hover={{ bg: "transparent" }}
         _active={{ bg: "transparent" }}
         _disabled={{ opacity: ".7", cursor: "not-allowed" }}
