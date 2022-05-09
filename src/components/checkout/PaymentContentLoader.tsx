@@ -1,13 +1,15 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 import ContentLoader from "react-content-loader";
 
 const PaymentContentLoader = () => {
+  const { colorMode } = useColorMode();
+
   return (
     <Box
       p="4"
-      bg="#fff"
       borderRadius="md"
       boxShadow="0px 0px 2px rgba(0, 0, 0, .2)"
+      bg={colorMode === "light" ? "#fff" : "surfaceDarkBg"}
     >
       <ContentLoader
         height={300}
