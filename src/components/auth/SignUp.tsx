@@ -133,7 +133,12 @@ const SignUp = () => {
 
               <Box as="p">
                 Already have an account?
-                <Link as={RouteLink} to="/sign-in" ml="1" color="link">
+                <Link
+                  ml="1"
+                  to="/sign-in"
+                  as={RouteLink}
+                  color={colorMode === "light" ? "linkLight" : "linkDark"}
+                >
                   Sign in
                 </Link>
               </Box>

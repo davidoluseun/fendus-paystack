@@ -40,7 +40,6 @@ const Fendus = () => {
         <Route path="/verify/:token" element={<VerifyEmail />} />
         <Route path="/verify" element={<SendEmailVerificationLink />} />
         <Route path="/password/recovery" element={<PasswordRecovery />} />
-        <Route path="/password/recovery" element={<PasswordRecovery />} />
         <Route path="/password/reset/:token" element={<PasswordReset />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products/:category/:id" element={<Product />} />
