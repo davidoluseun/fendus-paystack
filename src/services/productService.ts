@@ -24,7 +24,3 @@ export function saveProduct(request: SaveProductTypes, productId?: string) {
 export function deleteProduct(id: string) {
   return http.delete(`${apiEndpoint}/${id}`, headers);
 }
-
-export function demo(request: SaveProductTypes) {
-  return http.post(`${apiEndpoint}/demo`, request, headers);
-}
