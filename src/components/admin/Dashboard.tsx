@@ -9,12 +9,12 @@ import AdminNav from "./AdminNav";
 import Chart from "./DashboardChart";
 import Error from "../common/Error";
 import ContentLoader from "./DashboardContentLoader";
-import { getProducts } from "../../services/productService";
+import { getProductCount } from "../../services/productService";
 import { getAdminOrders } from "../../services/orderService";
 import { getTotalSales } from "../../utils/getTotalSales";
 
 const Dashboard = () => {
-  const [products, setProducts] = React.useState<ProductTypes[]>([]);
+  const [productCount, setProductCount] = React.useState(0);
   const [orders, setOrders] = React.useState<OrderTypes[]>([]);
   const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
@@ -30,11 +30,11 @@ const Dashboard = () => {
       setError(false);
 
       try {
-        const { data: products } = await getProducts();
+        const { data: productCount } = await getProductCount();
         const { data: orders } = await getAdminOrders();
 
         if (!didCancel) {
-          setProducts(products);
+          setProductCount(productCount.count);
           setOrders(orders);
         }
       } catch (ex) {
@@ -186,7 +186,7 @@ const Dashboard = () => {
                       <Heading as="h2" fontSize={{ base: "16px", xl: "18px" }}>
                         Total Products
                       </Heading>
-                      <Box>{products.length}</Box>
+                      <Box>{productCount}</Box>
                     </Box>
                   </Flex>
 

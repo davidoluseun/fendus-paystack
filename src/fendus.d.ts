@@ -17,6 +17,10 @@ type SaveProductTypes = {
   price: number | string;
 };
 
+type ProductCountTypes = {
+  count: number;
+}
+
 type CategoryTypes = {
   _id: string;
   name: string;

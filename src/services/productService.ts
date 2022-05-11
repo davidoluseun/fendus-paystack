@@ -14,6 +14,10 @@ export function getProduct(id: string | undefined) {
   return http.get<ProductTypes>(`${apiEndpoint}/${id}`);
 }
 
+export function getProductCount() {
+  return http.get<ProductCountTypes>(`${apiEndpoint}/admin/count`, headers);
+}
+
 export function saveProduct(request: SaveProductTypes, productId?: string) {
   if (productId)
     return http.put(`${apiEndpoint}/${productId}`, request, headers);
