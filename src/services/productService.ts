@@ -14,7 +14,7 @@ export function getProduct(id: string | undefined) {
   return http.get<ProductTypes>(`${apiEndpoint}/${id}`);
 }
 
-export function getProductCount() {
+export function getProductsCount() {
   return http.get<ProductCountTypes>(`${apiEndpoint}/admin/count`, headers);
 }
 

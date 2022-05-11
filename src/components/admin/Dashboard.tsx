@@ -9,7 +9,7 @@ import AdminNav from "./AdminNav";
 import Chart from "./DashboardChart";
 import Error from "../common/Error";
 import ContentLoader from "./DashboardContentLoader";
-import { getProductCount } from "../../services/productService";
+import { getProductsCount } from "../../services/productService";
 import {
   getOrdersCount,
   getSales,
@@ -35,7 +35,7 @@ const Dashboard = () => {
       setError(false);
 
       try {
-        const { data: productCount } = await getProductCount();
+        const { data: productCount } = await getProductsCount();
         const { data: ordersCount } = await getOrdersCount();
         const { data: sales } = await getSales();
         const { data: stats } = await getStats();
