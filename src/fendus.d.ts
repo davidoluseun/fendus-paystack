@@ -17,7 +17,7 @@ type SaveProductTypes = {
   price: number | string;
 };
 
-type ProductCountTypes = {
+type ProductsCountTypes = {
   count: number;
 }
 

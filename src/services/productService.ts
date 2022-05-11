@@ -15,7 +15,7 @@ export function getProduct(id: string | undefined) {
 }
 
 export function getProductsCount() {
-  return http.get<ProductCountTypes>(`${apiEndpoint}/admin/count`, headers);
+  return http.get<ProductsCountTypes>(`${apiEndpoint}/admin/count`, headers);
 }
 
 export function saveProduct(request: SaveProductTypes, productId?: string) {
