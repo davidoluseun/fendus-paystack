@@ -17,7 +17,7 @@ import {
 } from "../../services/orderService";
 
 const Dashboard = () => {
-  const [productCount, setProductCount] = React.useState(0);
+  const [productsCount, setProductsCount] = React.useState(0);
   const [ordersCount, setOrdersCount] = React.useState(0);
   const [sales, setSales] = React.useState(0);
   const [stats, setStats] = React.useState<StatsTypes[]>([]);
@@ -35,13 +35,13 @@ const Dashboard = () => {
       setError(false);
 
       try {
-        const { data: productCount } = await getProductsCount();
+        const { data: productsCount } = await getProductsCount();
         const { data: ordersCount } = await getOrdersCount();
         const { data: sales } = await getSales();
         const { data: stats } = await getStats();
 
         if (!didCancel) {
-          setProductCount(productCount.count);
+          setProductsCount(productsCount.count);
           setOrdersCount(ordersCount.count);
           setSales(sales.sales);
           setStats(stats);
@@ -193,7 +193,7 @@ const Dashboard = () => {
                       <Heading as="h2" fontSize={{ base: "16px", xl: "18px" }}>
                         Total Products
                       </Heading>
-                      <Box>{productCount}</Box>
+                      <Box>{productsCount}</Box>
                     </Box>
                   </Flex>
 
