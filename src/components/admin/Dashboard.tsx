@@ -10,12 +10,17 @@ import Chart from "./DashboardChart";
 import Error from "../common/Error";
 import ContentLoader from "./DashboardContentLoader";
 import { getProductCount } from "../../services/productService";
-import { getAdminOrders } from "../../services/orderService";
-import { getTotalSales } from "../../utils/getTotalSales";
+import {
+  getOrdersCount,
+  getSales,
+  getStats,
+} from "../../services/orderService";
 
 const Dashboard = () => {
   const [productCount, setProductCount] = React.useState(0);
-  const [orders, setOrders] = React.useState<OrderTypes[]>([]);
+  const [ordersCount, setOrdersCount] = React.useState(0);
+  const [sales, setSales] = React.useState(0);
+  const [stats, setStats] = React.useState<StatsTypes[]>([]);
   const [isLoading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
@@ -31,11 +36,15 @@ const Dashboard = () => {
 
       try {
         const { data: productCount } = await getProductCount();
-        const { data: orders } = await getAdminOrders();
+        const { data: ordersCount } = await getOrdersCount();
+        const { data: sales } = await getSales();
+        const { data: stats } = await getStats();
 
         if (!didCancel) {
           setProductCount(productCount.count);
-          setOrders(orders);
+          setOrdersCount(ordersCount.count);
+          setSales(sales.sales);
+          setStats(stats);
         }
       } catch (ex) {
         if (!didCancel) setError(true);
@@ -55,8 +64,6 @@ const Dashboard = () => {
   }, [shouldTryAgain]);
 
   const handleTryAgain = () => setTryAgain(true);
-
-  const totalSales = getTotalSales(orders);
 
   return (
     <Box as="section" px={{ base: "4", md: "6" }} marginX="auto" maxW="1200px">
@@ -122,7 +129,7 @@ const Dashboard = () => {
                       <CurrencyFormat
                         renderText={(value: number) => <Box>{value}</Box>}
                         decimalScale={2}
-                        value={totalSales}
+                        value={sales}
                         displayType={"text"}
                         thousandSeparator={true}
                         prefix="&#8358;"
@@ -156,7 +163,7 @@ const Dashboard = () => {
                       <Heading as="h2" fontSize={{ base: "16px", xl: "18px" }}>
                         Total Orders
                       </Heading>
-                      <Box>{orders.length}</Box>
+                      <Box>{ordersCount}</Box>
                     </Box>
                   </Flex>
 
@@ -214,7 +221,7 @@ const Dashboard = () => {
                         className="hide-scrollbar"
                         overflowX={{ base: "scroll", lg: "unset" }}
                       >
-                        <Chart orders={orders} />
+                        <Chart stats={stats} />
                       </Box>
                     </Box>
                   </Box>
