@@ -5,9 +5,9 @@ const apiEndpoint = "/products";
 
 const headers = getHeaders();
 
-export function getProducts(category?: string | undefined) {
-  if (!category) return http.get<ProductTypes[]>(apiEndpoint);
-  else return http.get<ProductTypes[]>(`${apiEndpoint}?category=${category}`);
+export function getProducts(query?: string) {
+  if (!query) return http.get<ProductTypes[]>(apiEndpoint);
+  else return http.get<ProductTypes[]>(`${apiEndpoint}?${query}`);
 }
 
 export function getProduct(id: string | undefined) {

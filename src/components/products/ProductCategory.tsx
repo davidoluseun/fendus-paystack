@@ -1,11 +1,16 @@
 import * as React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
+import { toast } from "react-toastify";
 import { useParams, useNavigate } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
 import ProductLayout02 from "../products/ProductLayout02";
 import MainHelperLinks from "../common/MainHelperLinks";
 import ContentLoader from "./ProductCategoryContentLoader";
 import Error from "../common/Error";
+import NextLoader from "../common/NextLoader";
+import NextError from "../common/NextError";
 import { getProducts } from "../../services/productService";
+import { parseHeaders } from "../../utils/parseHeaders";
 
 type ParamTypes = {
   category: string;
@@ -25,9 +30,13 @@ const ProductCategory = () => {
   const [hasError, setError] = React.useState(false);
   const [products, setProducts] = React.useState<ProductTypes[]>([]);
   const [shouldTryAgain, setTryAgain] = React.useState(false);
+  const [nextUrl, setNextUrl] = React.useState("");
+  const [nextLoading, setNextLoading] = React.useState(false);
+  const [, setNextError] = React.useState(false);
 
-  const { category: paramCategory } = useParams<ParamTypes>();
+  const { category } = useParams<ParamTypes>();
   const navigate = useNavigate();
+  const { colorMode } = useColorMode();
 
   React.useEffect(() => {
     let didCancel = false;
@@ -37,9 +46,14 @@ const ProductCategory = () => {
       setError(false);
 
       try {
-        const { data } = await getProducts(paramCategory);
+        const response = await getProducts(`category=${category}&pageSize=8`);
+        const { data, headers } = response;
+        const headersLinks = parseHeaders(headers);
 
-        if (!didCancel) setProducts(data);
+        if (!didCancel) {
+          setProducts(data);
+          setNextUrl(headersLinks.next);
+        }
       } catch (ex: any) {
         if (!didCancel)
           if (ex.response && ex.response.status === 400)
@@ -58,9 +72,47 @@ const ProductCategory = () => {
     return () => {
       didCancel = true;
     };
-  }, [shouldTryAgain, paramCategory, navigate]);
+  }, [shouldTryAgain, category, navigate]);
 
   const handleTryAgain = () => setTryAgain(true);
+
+  const fetchNextProducts = async (nextUrl: string) => {
+    setNextLoading(true);
+    setNextError(false);
+
+    try {
+      const queryStr = nextUrl.slice(nextUrl.indexOf("?") + 1);
+      const { data, headers } = await getProducts(queryStr);
+      const headersLinks = parseHeaders(headers);
+
+      setProducts(products.concat(data));
+      setNextUrl(headersLinks.next);
+    } catch (ex) {
+      setNextError(true);
+      colorMode === "light"
+        ? toast.dark(
+            <NextError
+              text="Failed to load products"
+              onTryAgain={handleNextTryAgain}
+            />,
+            { autoClose: false }
+          )
+        : toast(
+            <NextError
+              text="Failed to load products"
+              onTryAgain={handleNextTryAgain}
+            />,
+            { autoClose: false }
+          );
+    }
+    setNextLoading(false);
+  };
+
+  const handleFetchNextProducts = () => {
+    if (nextUrl) fetchNextProducts(nextUrl);
+  };
+
+  const handleNextTryAgain = () => fetchNextProducts(nextUrl);
 
   return (
     <Box px={{ base: "4", md: "6" }} marginX="auto" maxW="1200px">
@@ -75,11 +127,18 @@ const ProductCategory = () => {
             />
           ) : (
             <>
-              <MainHelperLinks links={getLinks(paramCategory)} />
-              <ProductLayout02 products={products.slice(0, 4)} />
-              <ProductLayout02 products={products.slice(4, 8)} />
-              <ProductLayout02 products={products.slice(8, 12)} />
-              <ProductLayout02 products={products.slice(12, 16)} />
+              <MainHelperLinks links={getLinks(category)} />
+              <Box mb={nextLoading ? "-10" : 0}>
+                <InfiniteScroll
+                  scrollThreshold={0.85}
+                  dataLength={products.length}
+                  next={handleFetchNextProducts}
+                  hasMore={nextUrl ? true : false}
+                  loader={nextLoading && <NextLoader />}
+                >
+                  <ProductLayout02 products={products} />
+                </InfiniteScroll>
+              </Box>
             </>
           )}
         </>
