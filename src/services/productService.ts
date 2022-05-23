@@ -14,6 +14,10 @@ export function getProduct(id: string | undefined) {
   return http.get<ProductTypes>(`${apiEndpoint}/${id}`);
 }
 
+export function getProductsCount() {
+  return http.get<ProductsCountTypes>(`${apiEndpoint}/admin/count`, headers);
+}
+
 export function saveProduct(request: SaveProductTypes, productId?: string) {
   if (productId)
     return http.put(`${apiEndpoint}/${productId}`, request, headers);
@@ -23,8 +27,4 @@ export function saveProduct(request: SaveProductTypes, productId?: string) {
 
 export function deleteProduct(id: string) {
   return http.delete(`${apiEndpoint}/${id}`, headers);
-}
-
-export function demo(request: SaveProductTypes) {
-  return http.post(`${apiEndpoint}/demo`, request, headers);
 }

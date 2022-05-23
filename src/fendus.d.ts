@@ -17,6 +17,10 @@ type SaveProductTypes = {
   price: number | string;
 };
 
+type ProductsCountTypes = {
+  count: number;
+}
+
 type CategoryTypes = {
   _id: string;
   name: string;
@@ -82,6 +86,14 @@ type OrderTypes = {
   datePurchased: string;
   total: number;
 };
+
+type OrdersCountTypes = {
+  count: number;
+}
+
+type SalesTypes = {
+  sales: number;
+}
 
 type SaveOrderTypes = {
   paymentId: string;
@@ -152,11 +164,11 @@ type SaveUserPhotoTypes = {
   img: string;
 };
 
-type ChartDataTypes = {
-  time: string;
+type StatsTypes = {
   sales: number;
-  orders: number;
-};
+  ordersCount: number;
+  month: string;
+}
 
 type SubscribeTypes = {
   firstName: string;
