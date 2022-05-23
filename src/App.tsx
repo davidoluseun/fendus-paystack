@@ -32,7 +32,7 @@ function App() {
         if (currentUser) {
           const responses = await Promise.all([
             getCategories(),
-            getProducts(),
+            getProducts("pageSize=50"),
             getUser(),
             getCarts(),
             getWishlists(),
