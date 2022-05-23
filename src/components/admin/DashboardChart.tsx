@@ -7,29 +7,22 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { format, parseISO } from "date-fns";
 import ChartTooltip from "./ChartTooltip";
-import { getDashboardChartData } from "../../utils/getDashboardChartData";
 
 type DashboardChartProps = {
-  orders: OrderTypes[];
+  stats: StatsTypes[];
 };
 
-const DashboardChart = ({ orders }: DashboardChartProps) => {
-  const chartData = getDashboardChartData(orders);
-
+const DashboardChart = ({ stats }: DashboardChartProps) => {
   return (
     <ResponsiveContainer minWidth={550} height={250}>
       <AreaChart
-        data={chartData}
+        data={stats}
         margin={{ top: 10, right: 5, left: -14, bottom: -8 }}
       >
         <Area dataKey="sales" stroke="#2451b7" fill="#2451b7" />
         <YAxis dataKey="sales" tickCount={7} />
-        <XAxis
-          dataKey="time"
-          tickFormatter={(date) => format(parseISO(date), "MMM")}
-        />
+        <XAxis dataKey="month" />
         <Tooltip cursor={false} content={<ChartTooltip />} />
         <CartesianGrid horizontal={false} vertical={false} />
       </AreaChart>
