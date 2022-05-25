@@ -5,8 +5,9 @@ const apiEndpoint = "/orders";
 
 const headers = getHeaders();
 
-export function getOrders() {
-  return http.get<OrderTypes[]>(apiEndpoint, headers);
+export function getOrders(query?: string) {
+  if (!query) return http.get<OrderTypes[]>(apiEndpoint, headers);
+  return http.get<OrderTypes[]>(`${apiEndpoint}?${query}`, headers);
 }
 
 export function getOrder(id: string | undefined) {
