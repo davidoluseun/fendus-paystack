@@ -33,8 +33,9 @@ export function cancelOrder(request: CancelTypes, id: string | undefined) {
   return http.put(`${apiEndpoint}/cancel/${id}`, request, headers);
 }
 
-export function getAdminOrders() {
-  return http.get<OrderTypes[]>(`${apiEndpoint}/admin`, headers);
+export function getAdminOrders(query?: string) {
+  if (!query) return http.get<OrderTypes[]>(`${apiEndpoint}/admin`, headers);
+  return http.get<OrderTypes[]>(`${apiEndpoint}/admin?${query}`, headers);
 }
 
 export function getAdminOrder(id: string | undefined) {
