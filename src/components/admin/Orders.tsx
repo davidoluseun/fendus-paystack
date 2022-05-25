@@ -152,7 +152,7 @@ const Orders = () => {
                       <OrdersTable orders={orders} isAdmin={true} />
                     </Box>
 
-                    <ButtonGroup isAttached>
+                    <ButtonGroup isAttached variant="outline">
                       <Button
                         bg="primary"
                         color="#fff"
