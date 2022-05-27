@@ -62,7 +62,10 @@ function App() {
               payload: initAppData,
             });
         } else {
-          const responses = await Promise.all([getCategories(), getProducts()]);
+          const responses = await Promise.all([
+            getCategories(),
+            getProducts("pageSize=50"),
+          ]);
 
           const categories = responses[0].data;
           const products = responses[1].data;
