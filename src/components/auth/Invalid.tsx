@@ -1,4 +1,4 @@
-import { Flex, Heading, Link, Text } from "@chakra-ui/react";
+import { Flex, Heading, Link, Text, useColorMode } from "@chakra-ui/react";
 import { Link as RouteLink } from "react-router-dom";
 
 type InvalidProps = {
@@ -8,6 +8,8 @@ type InvalidProps = {
 };
 
 const Invalid = ({ heading, text, to }: InvalidProps) => {
+  const { colorMode } = useColorMode();
+
   return (
     <Flex h="200px" direction="column" justify="center" textAlign="center">
       <Heading
@@ -20,7 +22,11 @@ const Invalid = ({ heading, text, to }: InvalidProps) => {
       </Heading>
       <Text mt="2" maxW="320px" mx="auto">
         Your {text} link is invalid. Request for a valid link{" "}
-        <Link color="link" as={RouteLink} to={to}>
+        <Link
+          to={to}
+          as={RouteLink}
+          color={colorMode === "light" ? "linkLight" : "linkDark"}
+        >
           here
         </Link>
       </Text>

@@ -1,4 +1,4 @@
-import { Flex, Heading, Link, Text } from "@chakra-ui/react";
+import { Flex, Heading, Link, Text, useColorMode } from "@chakra-ui/react";
 import { Link as RouteLink } from "react-router-dom";
 
 type ExpiredProps = {
@@ -8,6 +8,8 @@ type ExpiredProps = {
 };
 
 const Expired = ({ heading, text, to }: ExpiredProps) => {
+  const { colorMode } = useColorMode();
+
   return (
     <Flex h="200px" direction="column" justify="center" textAlign="center">
       <Heading
@@ -21,7 +23,11 @@ const Expired = ({ heading, text, to }: ExpiredProps) => {
       <Text mt="2" maxW="320px" mx="auto">
         Your request to {text} has expired or the link has already been used.
         Please request for a new link{" "}
-        <Link color="link" as={RouteLink} to={to}>
+        <Link
+          to={to}
+          as={RouteLink}
+          color={colorMode === "light" ? "linkLight" : "linkDark"}
+        >
           here
         </Link>
       </Text>

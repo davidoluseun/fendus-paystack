@@ -3,21 +3,21 @@ import {
   Box,
   Heading,
   Flex,
-  Link,
   Image,
   Grid,
-  Icon,
   LinkBox,
   LinkOverlay,
   IconButton,
+  Link,
+  Icon,
   useColorMode,
 } from "@chakra-ui/react";
-import CurrencyFormat from "react-currency-format";
 import { toast } from "react-toastify";
 import { useAlert } from "react-alert";
+import CurrencyFormat from "react-currency-format";
 import { Link as RouteLink, useNavigate } from "react-router-dom";
-import { FiMinus, FiPlus } from "react-icons/fi";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { FiMinus, FiPlus } from "react-icons/fi";
 import { AppContext } from "../common/AppContext";
 import { saveCart, deleteCart } from "../../services/cartService";
 import { getCurrentUser } from "../../services/authService";
@@ -317,8 +317,7 @@ const ProductLayout02 = (props: ProductLayout02Props) => {
                     icon={<FiMinus size="20px" />}
                   />
                   <Box as="span" my="1">
-                    {state.cart.find((c) => c.productId === product._id)?.qty ||
-                      0}
+                    {state.cart.find((c) => c.productId === product._id)?.qty || 0}
                   </Box>
                 </Flex>
               </Flex>
