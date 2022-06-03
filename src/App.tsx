@@ -30,19 +30,11 @@ function App() {
 
       try {
         if (currentUser) {
-          const responses = await Promise.all([
-            getCategories(),
-            getProducts("pageSize=50"),
-            getUser(),
-            getCarts(),
-            getWishlists(),
-          ]);
-
-          const categories = responses[0].data;
-          const products = responses[1].data;
-          const user = responses[2].data;
-          const cart = responses[3].data;
-          const wishlist = responses[4].data;
+          const { data: categories } = await getCategories();
+          const { data: products } = await getProducts("pageSize=50");
+          const {data: user} = await getUser();
+          const {data: cart} = await getCarts();
+          const {data: wishlist} = await getWishlists();
 
           const localStoragePaymentId = localStorage.getItem("paymentId");
           const paymentId = localStoragePaymentId ? localStoragePaymentId : "";
@@ -62,13 +54,8 @@ function App() {
               payload: initAppData,
             });
         } else {
-          const responses = await Promise.all([
-            getCategories(),
-            getProducts("pageSize=50"),
-          ]);
-
-          const categories = responses[0].data;
-          const products = responses[1].data;
+          const { data: categories } = await getCategories();
+          const { data: products } = await getProducts("pageSize=50");
 
           const initAppData = { categories, products };
 
