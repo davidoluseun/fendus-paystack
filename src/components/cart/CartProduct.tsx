@@ -11,6 +11,7 @@ import CurrencyFormat from "react-currency-format";
 import ReactTooltip from "react-tooltip";
 import { FiX } from "react-icons/fi";
 import { FiPlus, FiMinus } from "react-icons/fi";
+import ImageLoader from "../common/ImageLoader01";
 
 type CartProductProps = {
   cart: CartTypes[];
@@ -38,12 +39,13 @@ const CartProduct = (props: CartProductProps) => {
           bg={colorMode === "light" ? "#fff" : "surfaceDarkBg"}
         >
           <Flex
+            zIndex="1"
+            top="24px"
+            right="24px"
             mb={{ sm: "0" }}
+            order={{ sm: 1 }}
             justify="flex-end"
             position={{ base: "absolute", sm: "static" }}
-            right="24px"
-            top="24px"
-            order={{ sm: 1 }}
           >
             <IconButton
               borderRadius="full"
@@ -64,16 +66,26 @@ const CartProduct = (props: CartProductProps) => {
               id="remove"
               effect="solid"
               backgroundColor={colorMode === "light" ? "#000" : "#fff"}
-              textColor={colorMode === "light" ? "light" : "#000"}
+              textColor={colorMode === "light" ? "#f5f6f7" : "#000"}
             />
           </Flex>
 
-          <Image
-            w={{ sm: "120px" }}
-            borderRadius="md"
-            alt="Product image"
-            src={product.img.replace("upload/", "upload/w_480,h_480/")}
-          />
+          <Flex align="center" justify="center">
+            <Box
+              position="relative"
+              h={{ sm: "120px" }}
+              pb={{ base: "100%", sm: "0px" }}
+              w={{ base: "100%", sm: "120px" }}
+            >
+              <Image
+                borderRadius="md"
+                alt="Product image"
+                position="absolute"
+                fallback={<ImageLoader />}
+                src={product.img.replace("upload/", "upload/w_480,h_480/")}
+              />
+            </Box>
+          </Flex>
 
           <Flex
             pl={{ sm: "4" }}

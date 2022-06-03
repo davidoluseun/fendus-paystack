@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import SliderNextButton from "./SliderNextButton";
 import SliderPrevButton from "./SliderPrevButton";
 import { AppContext } from "../common/AppContext";
+import ImageLoader from "./ImageLoader"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -19,7 +20,7 @@ const HeroSlider = () => {
     arrows: true,
     infinite: true,
     speed: 500,
-    autoplay: true,
+    autoplay: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SliderNextButton />,
@@ -48,8 +49,11 @@ const HeroSlider = () => {
               left="0"
               borderRadius="md"
               position="absolute"
+              htmlHeight="962"
+              htmlWidth="1600"
               alt=""
               src={product.img}
+              fallback={<ImageLoader />}
             />
           </Link>
         ))}
