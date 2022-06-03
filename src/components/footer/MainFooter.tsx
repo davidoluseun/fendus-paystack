@@ -114,7 +114,7 @@ const MainFooter = () => {
                           focusBorderColor={
                             colorMode === "light" ? "#000" : "#fff"
                           }
-                          errorBorderColor="error"
+                          errorBorderColor="errorDark"
                           boxShadow="none !important"
                           placeholder="Enter your email address"
                           _hover={{ borderColor: "none" }}
@@ -137,7 +137,7 @@ const MainFooter = () => {
                           Subscribe
                         </Button>
                       </Flex>
-                      <FormErrorMessage color="error">
+                      <FormErrorMessage color="errorDark">
                         {errors["email"]}
                       </FormErrorMessage>
                     </FormControl>
