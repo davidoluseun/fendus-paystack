@@ -21,6 +21,7 @@ import CustomSelect from "../common/CustomSelect";
 import AdminNav from "./AdminNav";
 import Error from "../common/Error";
 import ContentLoader from "../common/OrderContentLoader";
+import ImageLoader from "../common/ImageLoader01";
 import options from "../../utils/orderStatusOptions";
 import orderStatusFormSchema from "../../schemas/orderStatusFormSchema";
 import { saveStatus, getAdminOrder } from "../../services/orderService";
@@ -210,15 +211,18 @@ const Order = () => {
                   >
                     {order?.products.map((product) => (
                       <Flex align="center" key={product._id}>
-                        <Image
-                          w="125px"
-                          borderRadius="md"
-                          alt="Product image"
-                          src={product.img.replace(
-                            "upload/",
-                            "upload/w_480,h_480/"
-                          )}
-                        />
+                        <Box minW="120px" h="120px" position="relative">
+                          <Image
+                            borderRadius="md"
+                            alt="Product image"
+                            position="absolute"
+                            src={product.img.replace(
+                              "upload/",
+                              "upload/w_480,h_480/"
+                            )}
+                            fallback={<ImageLoader />}
+                          />
+                        </Box>
                         <Box ml="4">
                           <Heading
                             as="h3"

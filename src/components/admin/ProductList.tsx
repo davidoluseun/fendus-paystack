@@ -11,6 +11,7 @@ import CurrencyFormat from "react-currency-format";
 import ReactTooltip from "react-tooltip";
 import { FaPenFancy } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import ImageLoader from "../common/ImageLoader02";
 
 type ProductListProps = {
   products: ProductTypes[];
@@ -42,12 +43,13 @@ const ProductList = ({ products, onEdit, onDelete }: ProductListProps) => {
           bg={colorMode === "light" ? "#fff" : "surfaceDarkBg"}
         >
           <Flex
+            top="8px"
+            zIndex="1"
+            right="8px"
+            mb={{ sm: "0" }}
+            order={{ sm: 1 }}
             justify="flex-end"
             position="absolute"
-            right="8px"
-            top="8px"
-            order={{ sm: 1 }}
-            mb={{ sm: "0" }}
           >
             <IconButton
               borderRadius="full"
@@ -72,11 +74,15 @@ const ProductList = ({ products, onEdit, onDelete }: ProductListProps) => {
             />
           </Flex>
 
-          <Image
-            borderTopRadius="md"
-            alt="Product image"
-            src={product.img.replace("upload/", "upload/w_480,h_480/")}
-          />
+          <Box pb="100%" position="relative">
+            <Image
+              borderTopRadius="md"
+              alt="Product image"
+              position="absolute"
+              fallback={<ImageLoader />}
+              src={product.img.replace("upload/", "upload/w_480,h_480/")}
+            />
+          </Box>
 
           <Flex p="3" direction="column">
             <Heading
