@@ -15,10 +15,11 @@ import { useNavigate } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import { useAlert } from "react-alert";
 import { MdFavorite } from "react-icons/md";
-import { AppContext } from "../common/AppContext";
 import { FiX } from "react-icons/fi";
+import { AppContext } from "../common/AppContext";
 import AccountNav from "../common/AccountNav";
 import EmptyCategory from "../common/EmptyCategory";
+import ImageLoader from "../common/ImageLoader02";
 import { saveToCarts, deleteWishlist } from "../../services/wishlistService";
 
 const Wishlist = () => {
@@ -168,11 +169,18 @@ const Wishlist = () => {
                       />
                     </Flex>
 
-                    <Image
-                      borderTopRadius="md"
-                      alt="Product image"
-                      src={wishProduct.img.replace("upload/", "upload/w_480/")}
-                    />
+                    <Box pb="100%" position="relative">
+                      <Image
+                        borderTopRadius="md"
+                        alt="Product image"
+                        position="absolute"
+                        fallback={<ImageLoader />}
+                        src={wishProduct.img.replace(
+                          "upload/",
+                          "upload/w_480/"
+                        )}
+                      />
+                    </Box>
 
                     <Flex p="3" direction="column">
                       <Heading

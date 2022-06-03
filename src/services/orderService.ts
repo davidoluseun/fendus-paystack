@@ -11,7 +11,7 @@ export function getOrders(query?: string) {
 }
 
 export function getOrder(id: string | undefined) {
-  return http.get<OrderTypes>(`${apiEndpoint}/order/${id}`, headers);
+  return http.get<OrderTypes>(`${apiEndpoint}/${id}`, headers);
 }
 
 export function getOrdersCount() {

@@ -19,6 +19,7 @@ import AccountNav from "../common/AccountNav";
 import OrderSummary from "../common/OrderSummary";
 import ContentLoader from "../common/OrderContentLoader";
 import Error from "../common/Error";
+import ImageLoader from "../common/ImageLoader01";
 import { getOrder, cancelOrder } from "../../services/orderService";
 
 type ParamTypes = {
@@ -181,15 +182,18 @@ const Order = () => {
                   >
                     {order?.products.map((product) => (
                       <Flex align="center" key={product._id}>
-                        <Image
-                          w="125px"
-                          borderRadius="md"
-                          alt="Product image"
-                          src={product.img.replace(
-                            "upload/",
-                            "upload/w_480,h_480/"
-                          )}
-                        />
+                        <Box minW="120px" h="120px" position="relative">
+                          <Image
+                            borderRadius="md"
+                            alt="Product image"
+                            position="absolute"
+                            src={product.img.replace(
+                              "upload/",
+                              "upload/w_480,h_480/"
+                            )}
+                            fallback={<ImageLoader />}
+                          />
+                        </Box>
                         <Box ml="4">
                           <Heading
                             as="h3"

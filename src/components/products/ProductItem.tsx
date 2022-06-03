@@ -14,6 +14,7 @@ import { useAlert } from "react-alert";
 import { toast } from "react-toastify";
 import CurrencyFormat from "react-currency-format";
 import { AppContext } from "../common/AppContext";
+import ImageLoader from "../common/ImageLoader01";
 import { saveCart } from "../../services/cartService";
 import { saveWishlist } from "../../services/wishlistService";
 import { getCurrentUser } from "../../services/authService";
@@ -85,33 +86,36 @@ const ProductItem = ({ product }: ProductItemProps) => {
     };
 
     if (wishProduct) {
-      alert.show("This product is in wishlist, do you wish to move it to cart?", {
-        title: "Move to Cart",
-        closeCopy: "No",
-        actions: [
-          {
-            copy: "Yes",
-            onClick: async () => {
-              setIsInCart(true);
-              dispatch({ type: "MOVE_FROM_WISHLIST_TO_CART", payload });
-              colorMode === "light"
-                ? toast.dark("Product moved to cart")
-                : toast("Product moved to cart");
-              try {
-                await saveCart({
-                  productId: payload.productId,
-                  qty: payload.qty,
-                });
-              } catch (ex) {
-                dispatch({
-                  type: "KEEP_ORIGINAL_STATE",
-                  payload: originalState,
-                });
-              }
+      alert.show(
+        "This product is in wishlist, do you wish to move it to cart?",
+        {
+          title: "Move to Cart",
+          closeCopy: "No",
+          actions: [
+            {
+              copy: "Yes",
+              onClick: async () => {
+                setIsInCart(true);
+                dispatch({ type: "MOVE_FROM_WISHLIST_TO_CART", payload });
+                colorMode === "light"
+                  ? toast.dark("Product moved to cart")
+                  : toast("Product moved to cart");
+                try {
+                  await saveCart({
+                    productId: payload.productId,
+                    qty: payload.qty,
+                  });
+                } catch (ex) {
+                  dispatch({
+                    type: "KEEP_ORIGINAL_STATE",
+                    payload: originalState,
+                  });
+                }
+              },
             },
-          },
-        ],
-      });
+          ],
+        }
+      );
     } else if (!cartProduct) {
       setIsInCart(true);
       dispatch({ type: "ADD_TO_CART", payload });
@@ -169,30 +173,33 @@ const ProductItem = ({ product }: ProductItemProps) => {
     };
 
     if (cartProduct) {
-      alert.show("This product is in cart, do you wish to move it to wishlist?", {
-        title: "Move to Wishlist",
-        closeCopy: "No",
-        actions: [
-          {
-            copy: "Yes",
-            onClick: async () => {
-              setIsInCart(false);
-              dispatch({ type: "MOVE_FROM_CART_TO_WISHLIST", payload });
-              colorMode === "light"
-                ? toast.dark("Product moved to wishlist")
-                : toast("Product moved to wishlist");
-              try {
-                await saveWishlist({ productId: payload.productId });
-              } catch (ex) {
-                dispatch({
-                  type: "KEEP_ORIGINAL_STATE",
-                  payload: originalState,
-                });
-              }
+      alert.show(
+        "This product is in cart, do you wish to move it to wishlist?",
+        {
+          title: "Move to Wishlist",
+          closeCopy: "No",
+          actions: [
+            {
+              copy: "Yes",
+              onClick: async () => {
+                setIsInCart(false);
+                dispatch({ type: "MOVE_FROM_CART_TO_WISHLIST", payload });
+                colorMode === "light"
+                  ? toast.dark("Product moved to wishlist")
+                  : toast("Product moved to wishlist");
+                try {
+                  await saveWishlist({ productId: payload.productId });
+                } catch (ex) {
+                  dispatch({
+                    type: "KEEP_ORIGINAL_STATE",
+                    payload: originalState,
+                  });
+                }
+              },
             },
-          },
-        ],
-      });
+          ],
+        }
+      );
     } else if (!wishProduct) {
       dispatch({ type: "ADD_TO_WISHLIST", payload });
       colorMode === "light"
@@ -214,13 +221,21 @@ const ProductItem = ({ product }: ProductItemProps) => {
     <Box mt="6" as="section">
       <Grid templateColumns={{ md: "repeat(2, 1fr)" }} gridGap="4">
         <Flex align="center" justify="center">
-          <Image
-            w={{ sm: "300px" }}
-            align="center"
-            borderRadius="md"
-            alt="Product image"
-            src={product.img.replace("upload/", "upload/w_480/")}
-          />
+          <Box
+            position="relative"
+            h={{ sm: "300px" }}
+            w={{ base: "100%", sm: "300px" }}
+            pb={{ base: "100%", sm: "0px" }}
+          >
+            <Image
+              align="center"
+              borderRadius="md"
+              alt="Product image"
+              position="absolute"
+              src={product.img.replace("upload/", "upload/w_480,h_480/")}
+              fallback={<ImageLoader />}
+            />
+          </Box>
         </Flex>
         <Box>
           <Heading mb="4" fontSize="26px" textTransform="capitalize">

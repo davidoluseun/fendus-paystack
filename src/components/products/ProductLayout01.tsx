@@ -13,6 +13,7 @@ import {
 import CurrencyFormat from "react-currency-format";
 import { Link as RouteLink } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import ImageLoader from "../common/ImageLoader01";
 
 type ProductLayout01Props = {
   products: ProductTypes[];
@@ -71,11 +72,15 @@ const ProductLayout01 = (props: ProductLayout01Props) => {
             borderRadius="md"
             justifyContent="space-between"
           >
-            <Image
-              alt="Product image"
-              borderRadius="md"
-              src={product.img.replace("upload/", "upload/w_480/")}
-            />
+            <Box pb="100%" position="relative">
+              <Image
+                alt="Product image"
+                borderRadius="md"
+                position="absolute"
+                src={product.img.replace("upload/", "upload/w_480/")}
+                fallback={<ImageLoader />}
+              />
+            </Box>
 
             <Heading
               as="h3"

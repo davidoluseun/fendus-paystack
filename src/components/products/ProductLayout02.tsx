@@ -19,6 +19,7 @@ import { Link as RouteLink, useNavigate } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { AppContext } from "../common/AppContext";
+import ImageLoader from "../common/ImageLoader02";
 import { saveCart, deleteCart } from "../../services/cartService";
 import { getCurrentUser } from "../../services/authService";
 
@@ -212,11 +213,15 @@ const ProductLayout02 = (props: ProductLayout02Props) => {
             borderRadius="md"
             boxShadow="0px 0px 2px rgba(0, 0, 0, .2)"
           >
-            <Image
-              alt="Product image"
-              borderTopRadius="md"
-              src={product.img.replace("upload/", "upload/w_480/")}
-            />
+            <Box pb="100%" position="relative">
+              <Image
+                alt="Product image"
+                borderTopRadius="md"
+                position="absolute"
+                src={product.img.replace("upload/", "upload/w_480,h_480/")}
+                fallback={<ImageLoader />}
+              />
+            </Box>
 
             <Flex p="3" justify="space-between">
               <Flex mr="2" direction="column" justify="space-between">
@@ -317,7 +322,8 @@ const ProductLayout02 = (props: ProductLayout02Props) => {
                     icon={<FiMinus size="20px" />}
                   />
                   <Box as="span" my="1">
-                    {state.cart.find((c) => c.productId === product._id)?.qty || 0}
+                    {state.cart.find((c) => c.productId === product._id)?.qty ||
+                      0}
                   </Box>
                 </Flex>
               </Flex>
