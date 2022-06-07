@@ -162,7 +162,7 @@ const Order = () => {
                   >
                     <Box>
                       <Box as="span" mr="2" fontWeight="semibold">
-                        Order ID:
+                      Payment ID:
                       </Box>
                       <Box as="span">{order?.paymentId}</Box>
                     </Box>
