@@ -137,12 +137,13 @@ const Wishlist = () => {
                     bg={colorMode === "light" ? "#fff" : "surfaceDarkBg"}
                   >
                     <Flex
+                      top="8px"
+                      zIndex="1"
+                      right="8px"
+                      mb={{ sm: "0" }}
+                      order={{ sm: 1 }}
                       justify="flex-end"
                       position="absolute"
-                      right="8px"
-                      top="8px"
-                      order={{ sm: 1 }}
-                      mb={{ sm: "0" }}
                     >
                       <IconButton
                         borderRadius="full"
