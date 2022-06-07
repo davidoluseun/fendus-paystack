@@ -1,4 +1,3 @@
-import { format, parseISO } from "date-fns";
 import { Box, useColorMode } from "@chakra-ui/react";
 import CurrencyFormat from "react-currency-format";
 
@@ -15,9 +14,8 @@ const ChartTooltip = ({ active, payload }: any) => {
           bg={colorMode === "light" ? "#000" : "#fff"}
           color={colorMode === "light" ? "#fff" : "#000"}
         >
-          <Box>{format(parseISO(payload[0].payload.time), "MMM, yyyy")}</Box>
-
-          <Box>Orders: {payload[0].payload.orders}</Box>
+          <Box>{payload[0].payload.month}</Box>
+          <Box>Orders: {payload[0].payload.ordersCount}</Box>
           <CurrencyFormat
             renderText={(value: number) => <Box>Sales: {value}</Box>}
             decimalScale={2}
