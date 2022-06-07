@@ -23,7 +23,7 @@ const SubFooter = () => {
     >
       <Box>
         <Text textAlign="center">
-          Copyright 2021 Fendus - All Rights Reserved.
+          Copyright 2022 Fendus - All Rights Reserved.
         </Text>
       </Box>
       <Box>
